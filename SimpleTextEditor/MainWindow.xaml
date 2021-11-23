@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SimpleTextEditor"
         mc:Ignorable="d"
-        Title="Текстовый редактор" Height="450" Width="600">
+        Title="Текстовый редактор" Height="450" Width="600">    
     <Window.CommandBindings>
         <CommandBinding Command="Close" Executed="CloseExecuted"/>
         <CommandBinding Command="Open" Executed="OpenExecuted"/>
@@ -14,9 +14,10 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Menu Margin="5" Padding="5">
+        <Menu Margin="5" Padding="5" Background="#FFEEF5FD">
             <MenuItem Header="_Файл">
                 <MenuItem Header="_Открыть" Command="Open"/>
                 <MenuItem Header="_Сохранить" Command="Save"/>
@@ -32,6 +33,33 @@
                 <MenuItem Header="О программе"/>
             </MenuItem>
         </Menu>
-        <TextBox x:Name="myTextBox" Grid.Row="1" Margin="3" Padding="5" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
+        <ToolBarTray Grid.Row="1" Margin="5,2,5,0">
+            <ToolBar Margin="2" Padding="2">
+                <ComboBox ItemsSource="{StaticResource fonts}" Margin="2" Padding="2" SelectedItem="Arial" Width="200" SelectionChanged="ComboBox_SelectionChanged">
+                </ComboBox>
+                <ComboBox ItemsSource="{StaticResource fontSize}" Margin="2" Padding="2" SelectedItem="12" Width="50" SelectionChanged="ComboBox_SelectionChanged_1">
+                </ComboBox>
+            </ToolBar>
+            <ToolBar Margin="2" Padding="2">
+                <Button Click="Button_Click">
+                    <Image Source="Data/text_bold.png"/>
+                </Button>
+                <Separator/>
+                <Button Click="Button_Click_1">
+                    <Image Source="Data/text_italic.png"/>
+                </Button>
+                <Separator/>
+                <Button Click="Button_Click_2">
+                    <Image Source="Data/text_underline.png"/>
+                </Button>
+            </ToolBar>
+            <ToolBar Margin="2" Padding="2">
+                <StackPanel VerticalAlignment="Center">
+                    <RadioButton Content="Черный" IsChecked="True" Checked="RadioButton_Checked_1"/>
+                    <RadioButton Content="Красный" Checked="RadioButton_Checked"/>
+                </StackPanel>
+            </ToolBar>
+        </ToolBarTray>
+        <TextBox x:Name="myTextBox" Grid.Row="2" Margin="3" Padding="5" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
     </Grid>
 </Window>

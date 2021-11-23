@@ -26,6 +26,75 @@ namespace SimpleTextEditor
         {
             InitializeComponent();
         }
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string fontName = (sender as ComboBox).SelectedItem as string;
+            if (myTextBox != null)
+            {
+                myTextBox.FontFamily = new FontFamily(fontName);
+            }
+        }
+
+        private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            double fontSize = Convert.ToDouble((sender as ComboBox).SelectedItem as string);
+            if (myTextBox != null)
+            {
+                myTextBox.FontSize = fontSize;
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (myTextBox.FontWeight != FontWeights.Bold)
+            {
+                myTextBox.FontWeight = FontWeights.Bold;
+            }
+            else
+            {
+                myTextBox.FontWeight = FontWeights.Normal;
+            }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (myTextBox.FontStyle != FontStyles.Italic)
+            {
+                myTextBox.FontStyle = FontStyles.Italic;
+            }
+            else
+            {
+                myTextBox.FontStyle = FontStyles.Normal;
+            }
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            if (myTextBox.TextDecorations != TextDecorations.Underline)
+            {
+                myTextBox.TextDecorations = TextDecorations.Underline;
+            }
+            else
+            {
+                myTextBox.TextDecorations = null;
+            }
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            if (myTextBox != null)
+            {
+                myTextBox.Foreground = Brushes.Red;
+            }
+        }
+
+        private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
+        {
+            if (myTextBox != null)
+            {
+                myTextBox.Foreground = Brushes.Black;
+            }
+        }
 
         private void CloseExecuted(object sender, ExecutedRoutedEventArgs e)
         {
