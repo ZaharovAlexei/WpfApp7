@@ -92,7 +92,14 @@ namespace SimpleTextEditor
         {
             if (myTextBox != null)
             {
-                myTextBox.Foreground = Brushes.Black;
+                if (myTextBox.Background == Brushes.Black)
+                {
+                    myTextBox.Foreground = Brushes.White;
+                }
+                else
+                {
+                    myTextBox.Foreground = Brushes.Black;
+                }
             }
         }
 
@@ -119,6 +126,31 @@ namespace SimpleTextEditor
             {
                 File.WriteAllText(saveFileDialog.FileName, myTextBox.Text);
             }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Uri uri = new Uri("Light.xaml", UriKind.Relative);
+            ResourceDictionary resource = Application.LoadComponent(uri) as ResourceDictionary;
+            Application.Current.Resources.Clear();
+            Application.Current.Resources.MergedDictionaries.Add(resource);
+            if (myTextBox.Foreground == Brushes.White)
+            {
+                myTextBox.Foreground = Brushes.Black;
+            }
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            Uri uri = new Uri("Dark.xaml", UriKind.Relative);
+            ResourceDictionary resource = Application.LoadComponent(uri) as ResourceDictionary;
+            Application.Current.Resources.Clear();
+            Application.Current.Resources.MergedDictionaries.Add(resource);
+            if (myTextBox.Foreground == Brushes.Black)
+            {
+                myTextBox.Foreground = Brushes.White;
+            }
+
         }
     }
 }

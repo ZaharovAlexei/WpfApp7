@@ -2,6 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <col:ArrayList x:Key="fontName">
+        <sys:String>Arial</sys:String>
+        <sys:String>Times New Roman</sys:String>
+        <sys:String>Verdana</sys:String>
+    </col:ArrayList>
     <col:ArrayList x:Key="fontSize">
         <sys:String>12</sys:String>
         <sys:String>14</sys:String>
